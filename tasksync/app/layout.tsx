@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Andada_Pro } from "next/font/google";
+import { Bitter } from "next/font/google";
 import "./globals.css";
 
-const inter = Andada_Pro({ subsets: ["latin"] });
+const inter = Bitter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
