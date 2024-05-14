@@ -21,8 +21,6 @@ const MainPage = () => {
                 No. 1 Collaborative Platform
             </div>
             </div>
-
-            {/*<h1 className="mt-5 text-4xl font-bold text-center text-white mb-6">Welcome to TaskSync</h1>*/}
             <div>
             <p className="text-transparent mt-7 ml-5 text-3xl md:text-5xl bg-gradient-to-r from-yellow-600 to-pink-600 bg-clip-text px-4 p-2 rounded-md pb-4 w-fit font-extrabold">
                 Empowering Collaboration, One Sync at a Time
