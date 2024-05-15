@@ -1,6 +1,8 @@
+"use client"
 import Link from "next/link";
 import Logo from "@/components/logo";
 import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
 
 export const Header = () => {
   return (
@@ -12,8 +14,11 @@ export const Header = () => {
           <Link href="/pricing">Pricing</Link>
           <Link href="/features">Features</Link>
         </nav>
-        <Button size="sm" asChild>
-          <Link href="/sign-up">Login</Link>
+        <Button 
+        onClick={() => signIn("google", { callbackUrl: "/secure" })}
+        size="sm">
+          Login
+          {/*<Link href="/secure">Login</Link>*/}
         </Button>
       </div>
     </header>
