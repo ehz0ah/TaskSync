@@ -3,7 +3,6 @@ import { Medal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
 
 export default function MainPage() {
   return (
