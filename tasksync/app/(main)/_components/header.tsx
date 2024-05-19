@@ -15,6 +15,7 @@ export const Header = () => {
           <Link href="/features">Features</Link>
         </nav>
         <Button 
+        className="border rounded-full border-white hover:bg-white hover:text-black hover:border-transparent"
         onClick={() => signIn("google", { callbackUrl: "/secure" })}
         size="sm">
           Login

@@ -3,6 +3,7 @@ import { Medal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
+import { WavyBackground } from "@/components/ui/wave";
 
 export default function MainPage() {
   return (
@@ -26,14 +27,14 @@ export default function MainPage() {
           <p className="text-transparent mt-7 ml-5 text-3xl md:text-5xl bg-gradient-to-r from-yellow-600 to-pink-600 bg-clip-text px-4 p-2 rounded-md pb-4 w-fit font-extrabold">
             Empowering Collaboration, One Sync at a Time
           </p>
-          <p className="text-sm md:text-xl text-neutral-400 mt-8 max-w-xs md:max-w-2xl text-center mx-auto">
+          <p className="text-sm md:text-xl text-neutral-300 mt-5 max-w-xs md:max-w-2xl text-center mx-auto">
             Unlock Your Potential with Effortless Task Management Now.
           </p>
         </div>
       </div>
       <Button
         onClick={() => signIn("google", { callbackUrl: "/secure" })}
-        className="mt-8 "
+        className="mt-8 outline rounded-lg outline-violet-300 hover:bg-white hover:text-black hover:border-transparent"
         size="sm"
       >
         <div>Get TaskSync For Free</div>

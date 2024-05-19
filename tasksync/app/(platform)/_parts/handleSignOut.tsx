@@ -9,7 +9,7 @@ export default function HandleSignOut() {
     <Button
       onClick={() => signOut({ callbackUrl: "/" })}
       size="sm"
-      className="ml-3 items-center gap-1"
+      className="ml-3 items-center gap-1 border border-white hover:bg-white hover:text-black"
     >
       Log Out
       <FontAwesomeIcon icon={faArrowRightFromBracket} />

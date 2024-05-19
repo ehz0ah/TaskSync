@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html,
 body {
   height: 100%;
+  /* background: url('/mountains.jpg') no-repeat center center fixed;
+  background-size: cover; */
 }
 
 @layer base {
@@ -70,6 +71,19 @@ body {
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
   }
+}
+
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.weird-margin {
+  margin:0 20%;
 }
 
 @layer base {
