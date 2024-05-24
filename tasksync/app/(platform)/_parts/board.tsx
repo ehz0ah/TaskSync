@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useCallback } from "react";
+import React from "react";
 
 type BoardProps = {
   name: string;
@@ -8,16 +8,16 @@ type BoardProps = {
 
 export const Board: React.FC<BoardProps> = ({ name, onDelete }) => {
   return (
-    <div className="relative border rounded-lg w-64 h-64 flex flex-col items-center justify-center bg-white shadow">
+    <div className="relative border border-black rounded-lg w-64 h-64 flex flex-col items-center justify-center bg-transparent shadow">
       <button
         onClick={onDelete}
-        className="pb-0.5 absolute top-2 right-2 hover:text-black hover:border-black border border-slate-200 text-slate-200 rounded-full w-6 h-6 flex items-center justify-center"
+        className="pb-0.5 absolute top-2 right-2 hover:text-black text-slate-200 rounded-full w-6 h-6 flex items-center justify-center"
       >
         &times;
       </button>
       <button
-        // onClick={(e) => e.stopPropagation()}
-        className="absolute top-2 left-2 text-gray-500"
+        onClick={(e) => e.stopPropagation()}
+        className="absolute top-2 left-2 text-slate-200 hover:text-black"
       >
         <Link href={"/settings"}>
           <svg
@@ -42,9 +42,14 @@ export const Board: React.FC<BoardProps> = ({ name, onDelete }) => {
           </svg>
         </Link>
       </button>
-      <h2 className="text-2xl font-bold mb-4 text-black">{name}</h2>{" "}
+      <button className="text-2xl font-bold mb-4 text-black">
+        <Link href={`/workspace/${name}`}>{name}</Link>
+      </button>
+      {/*{" "}*/}
       {/* Add text-black to make text visible */}
       <div>{/* You can add more functionality here for the to-do list */}</div>
     </div>
   );
 };
+
+// text-2xl font-bold mb-4 text-black bg-slate-200 w-full h-full

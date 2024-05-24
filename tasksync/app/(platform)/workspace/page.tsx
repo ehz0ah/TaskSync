@@ -1,10 +1,20 @@
+import { authOptions } from '@/lib/authOptions';
+import { getServerSession } from 'next-auth';
 import dynamic from 'next/dynamic';
+import Alert from '../_parts/alert';
+import React from 'react';
 
 const Carousel = dynamic(() => import('../_parts/carousel'), { ssr: false });
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
   return (
     <div className="container mx-auto">
+      {session && (
+        <Alert
+          message={`Hello, ${session?.user?.name}`}
+        />
+      )}
       <main className="flex flex-col items-center justify-center min-h-screen py-2">
         <h1 className="text-4xl font-bold mb-8 pr-5">Welcome Back!</h1>
         <Carousel />

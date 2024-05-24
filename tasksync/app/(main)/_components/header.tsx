@@ -16,7 +16,7 @@ export const Header = () => {
         </nav>
         <Button 
         className="border rounded-full border-white hover:bg-white hover:text-black hover:border-transparent"
-        onClick={() => signIn("google", { callbackUrl: "/secure" })}
+        onClick={() => signIn("google", { callbackUrl: "/workspace" })}
         size="sm">
           Login
         </Button>

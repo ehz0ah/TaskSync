@@ -2,8 +2,9 @@ import Top from "./_parts/top";
 
 const PlatformLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div style={{ backgroundImage: `url(${'/mountains.jpg'})` }}
-    className="h-screen bg-cover bg-center text-white border-b-8 border-b-solid border-b-slate-400"
+    // <div style={{ backgroundImage: `url(${'/Ronaldo.jpg'})` }}
+    <div
+    className="h-screen bg-cover bg-slate-600 bg-center text-white border-b-8 border-b-solid border-b-slate-400"
     >
       <Top />
       <main>{children}</main>

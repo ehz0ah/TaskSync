@@ -33,7 +33,7 @@ export default function MainPage() {
         </div>
       </div>
       <Button
-        onClick={() => signIn("google", { callbackUrl: "/secure" })}
+        onClick={() => signIn("google", { callbackUrl: "/workspace" })}
         className="mt-8 outline rounded-lg outline-violet-300 hover:bg-white hover:text-black hover:border-transparent"
         size="sm"
       >
