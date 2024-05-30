@@ -74,6 +74,51 @@ body {
 }
 
 
+/* Customizing button text*/
+.fc .fc-button {
+  text-transform: capitalize;
+}
+
+/* Styling the calendar title */
+.fc-toolbar-title {
+  color: white;
+  font-weight: 600; /* Semibold */
+}
+
+/* Styling the dates and days of the week */
+.fc-daygrid-day-number,
+.fc-col-header-cell-cushion {
+  color: white;
+}
+
+/* Styling the time text in the week view */
+.fc-timegrid-axis-cushion {
+  color: white;
+}
+
+/* Changing "all-day" to "All-Day" */
+.fc-timegrid-allday-cushion {
+  color: white; /* Ensure the color is white */
+}
+.fc-timegrid-allday-cushion::before {
+  content: "All-Day";
+  color: white; /* Ensure the color is white */
+}
+
+/* Styling the time labels (e.g., 6am, 7am, 8am, etc.) */
+.fc-timegrid-slot-label {
+  color: white; /* Ensure the time labels are white */
+}
+
+/* FullCalendar container */
+.fullcalendar-container {
+  width: 70vw; /* Adjust the width as needed */
+  height: 90vh; /* Adjust the height as needed */
+  margin: 0 auto; /* Center the calendar horizontally */
+}
+
+
+
 .hide-scroll-bar {
   -ms-overflow-style: none;
   scrollbar-width: none;

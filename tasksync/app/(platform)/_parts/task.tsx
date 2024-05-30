@@ -1,3 +1,4 @@
+"use client";
 import React, {
   Dispatch,
   SetStateAction,
@@ -9,7 +10,7 @@ import { FiPlus, FiTrash } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { FaFire } from "react-icons/fa";
 
-export const CustomKanban = () => {
+export const Kanban = () => {
   return (
     <div className="h-screen w-full bg-neutral-900 text-neutral-50">
       <Board />
@@ -17,8 +18,8 @@ export const CustomKanban = () => {
   );
 };
 
-const Board = () => {
-  const [cards, setCards] = useState(DEFAULT_CARDS);
+export const Board = () => {
+  const [cards, setCards] = useState<CardType[]>([]);
 
   return (
     <div className="flex h-full w-full gap-3 overflow-scroll p-12">

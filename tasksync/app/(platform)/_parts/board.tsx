@@ -3,23 +3,36 @@ import React from "react";
 
 type BoardProps = {
   name: string;
+  roomId: string;
   onDelete: () => void;
 };
 
-export const Board: React.FC<BoardProps> = ({ name, onDelete }) => {
+// This is a functional component that represents a board in the app.
+// It receives a set of props including the name of the board, the room ID, and a function to handle deletion.
+export const Board: React.FC<BoardProps> = ({
+  name, // The name of the board.
+  roomId, // The ID of the room that the board belongs to.
+  onDelete, // A function to handle deletion of the board.
+}) => {
   return (
-    <div className="relative border border-black rounded-lg w-64 h-64 flex flex-col items-center justify-center bg-transparent shadow">
+    // The board is represented by a div with a relative position.
+    // The border and shadow styles are applied to create a visually appealing appearance.
+    <div className="relative border border-neutral-800 rounded-lg w-64 h-64 flex flex-col items-center justify-center bg-transparent shadow-2xl">
+      {/* This button is used to delete the board. */}
       <button
-        onClick={onDelete}
+        onClick={onDelete} // When the button is clicked, the onDelete function is called.
         className="pb-0.5 absolute top-2 right-2 hover:text-black text-slate-200 rounded-full w-6 h-6 flex items-center justify-center"
       >
-        &times;
+        &times; {/* The button displays a close icon.*/}
       </button>
+      {/* This button is used to navigate to the board settings. */}
       <button
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()} // When the button is clicked, the event's propagation is stopped.
         className="absolute top-2 left-2 text-slate-200 hover:text-black"
       >
-        <Link href={"/settings"}>
+        {/* This Link component is used to navigate to the board settings page. */}
+        <Link href={`/workspace/${roomId}/settings`}>
+          {/* This svg component displays a settings icon. */}
           <svg
             width="24"
             height="24"
@@ -42,14 +55,10 @@ export const Board: React.FC<BoardProps> = ({ name, onDelete }) => {
           </svg>
         </Link>
       </button>
-      <button className="text-2xl font-bold mb-4 text-black">
-        <Link href={`/workspace/${name}`}>{name}</Link>
+      {/* This button displays the name of the board and navigates to the board page. */}
+      <button className="text-2xl font-bold mb-4 text-white">
+        <Link href={`/workspace/${roomId}/timetree`}>{name}</Link>
       </button>
-      {/*{" "}*/}
-      {/* Add text-black to make text visible */}
-      <div>{/* You can add more functionality here for the to-do list */}</div>
     </div>
   );
 };
-
-// text-2xl font-bold mb-4 text-black bg-slate-200 w-full h-full

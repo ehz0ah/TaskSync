@@ -9,7 +9,7 @@ export default async function Top() {
     <header className="absolute top-0 left-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
         <Logo textColour="text-white"/>
-        <div className="text-black items-center justify-between font-bold">
+        <div className="text-white items-center justify-between font-bold">
           {session && (
             <>
               Hello, {session?.user?.name}
