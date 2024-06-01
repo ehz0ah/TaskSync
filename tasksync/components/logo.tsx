@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 // Logo component
-export const Logo = ({textColour = 'text-black'}) => {
+export const Logo = async ({textColour = 'text-black'}) => {
   return (
-    <Link href="/">
+    <Link href='/'>
       <div className="transition items-center hidden md:flex mr-0">
         {/* hidden by default, visible on medium screens and above */}
         <Image src="/logo2.svg" alt="logo2" height={70} width={70} />

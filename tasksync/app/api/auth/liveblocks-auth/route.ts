@@ -1,18 +1,17 @@
-import { metadata } from "@/app/layout";
 import { authOptions } from "@/lib/authOptions";
 import { Liveblocks } from "@liveblocks/node";
 import { getServerSession } from "next-auth";
 import uniqid from "uniqid";
 
 const liveblocks = new Liveblocks({
-  secret:
-    "sk_dev_83QKuNgPK1CFYfmxpqAcifB1xM1diATIqlh4llS4H1IU4W3zQofjwNPGKsi3l-bE",
+  secret: process.env.LIVEBLOCKS_SECRET || '',
 });
 
 export async function POST(request: Request) {
+  
+
   // Get the current user from your database
   const session = await getServerSession(authOptions);
-  console.log(session);
   if (!session) {
     return new Response("Unauthorized", { status: 401 });
   }

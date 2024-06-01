@@ -1,3 +1,4 @@
+
 import { Header } from "./_components/header";
 import { Footer } from "./_components/footer";
 import { WavyBackground } from "@/components/ui/wave";
