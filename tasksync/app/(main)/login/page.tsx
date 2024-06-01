@@ -1,4 +1,5 @@
 "use client";
+import Alert from "@/app/(platform)/_parts/alert";
 import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 
@@ -24,7 +25,12 @@ export default function Login() {
             </Button>
           </div>
           <div>
-            <Button className="relative flex items-center justify-center w-full px-4 py-2 mb-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg group hover:bg-gray-50">
+            <Button
+              onClick={() => {
+                window.alert("Coming Soon!!");
+              }}
+              className="relative flex items-center justify-center w-full px-4 py-2 mb-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg group hover:bg-gray-50"
+            >
               <GithubIcon className="w-5 h-5 text-gray-500 group-hover:text-gray-700" />
               <span className="ml-2">Continue with Github</span>
             </Button>
@@ -48,7 +54,7 @@ export default function Login() {
               <input
                 autoComplete="email"
                 className="relative block w-full px-3 py-2 mb-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                defaultValue="alex@mail.com"
+                defaultValue="Alex@gmail.com"
                 id="email-address"
                 name="email"
                 placeholder="Email address"
@@ -74,6 +80,9 @@ export default function Login() {
           </div>
           <div>
             <Button
+              onClick={() => {
+                window.alert("Coming Soon!!");
+              }}
               className="group relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               type="submit"
             >

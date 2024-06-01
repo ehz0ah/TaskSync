@@ -4,7 +4,13 @@ import { Button } from "@/components/ui/button";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "next-auth/react";
-import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 import { Fragment } from "react";
 
 export default function HandleSignOut() {
@@ -77,8 +83,10 @@ export default function HandleSignOut() {
                     >
                       Yes
                     </Button>
-                    <Button onClick={closeModal} variant="secondary"
-                    className="bg-neutral-200 hover:bg-red-500"
+                    <Button
+                      onClick={closeModal}
+                      variant="secondary"
+                      className="bg-neutral-200 hover:bg-red-500"
                     >
                       No
                     </Button>

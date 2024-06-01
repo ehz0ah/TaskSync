@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { WavyBackground } from "@/components/ui/wave";
+import Link from "next/link";
 
 // This is the main page component for the application.
 // It displays a welcome message and a button to sign in with Google.
@@ -45,13 +46,13 @@ export default function MainPage() {
           </p>
         </div>
       </div>
-      {/* The sign in button is a Button component with a Google sign in action. */}
       <Button
-        onClick={() => signIn("google", { callbackUrl: "/workspace" })}
         className="mt-8 outline rounded-lg outline-violet-300 hover:bg-white hover:text-black hover:border-transparent"
         size="sm"
       >
-        <div>Get TaskSync For Free</div>
+        <Link href="/login">
+          Get TaskSync For Free
+          </Link>
       </Button>
 
       {/* The image below the button is displayed using the Image component. */}
