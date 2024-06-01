@@ -23,7 +23,7 @@ Welcome to TaskSync, a visual collaboration tool designed to empower teams in ma
   <img src="https://img.shields.io/badge/NextAuth.js-FFFFFF?style=for-the-badge&logo=next.js&logoColor=000000" alt="NextAuth.js">
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
   <img src="https://img.shields.io/badge/LiveBlocks-000000?style=for-the-badge&logo=liveblocks&logoColor=white" alt="LiveBlocks">
-<!--   <img src="https://img.shields.io/badge/Stripe-008CDD?style=for-the-badge&logo=stripe&logoColor=white" alt="Stripe"> -->
+  <img src="https://img.shields.io/badge/Stripe-008CDD?style=for-the-badge&logo=stripe&logoColor=white" alt="Stripe">
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
   <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
