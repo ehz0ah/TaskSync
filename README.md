@@ -44,8 +44,8 @@ Ensure you have the following installed on your development machine:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/ehz0ah/Orbital
-    cd tasksync
+    git clone https://github.com/ehz0ah/TaskSync
+    cd .\tasksync\
     ```
 
 2. Install dependencies:
