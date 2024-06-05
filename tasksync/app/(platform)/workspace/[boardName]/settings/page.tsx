@@ -1,8 +1,8 @@
-"use client"
-import React from 'react';
-import { useParams } from 'next/navigation';
-import Settings from '@/components/options';
-import Sidebar from '@/components/sidebar';
+"use client";
+import React from "react";
+import { useParams } from "next/navigation";
+import Settings from "@/components/options";
+import Sidebar from "@/components/sidebar";
 
 /**
  * SettingsPage is a functional component that renders the settings page for a specific board.
@@ -14,17 +14,15 @@ const SettingsPage: React.FC = () => {
   const { boardName } = params;
 
   // If the board name is not available or is not a string, display a loading message.
-  if (!boardName || typeof boardName !== 'string') {
+  if (!boardName || typeof boardName !== "string") {
     return <div>Loading...</div>;
   }
 
   // Render the SettingsPage component.
   return (
-    <div className="flex items-center justify-center pt-[25vh]">
-      {/* Render the Sidebar component. */}
+    <div className="flex">
       <Sidebar />
-      {/* Render the Settings component, passing the boardName as a prop. */}
-      <div className="ml-5">
+      <div className="pt-24 pl-[20vw]">
         <Settings boardName={boardName} />
       </div>
     </div>
@@ -32,3 +30,10 @@ const SettingsPage: React.FC = () => {
 };
 
 export default SettingsPage;
+
+// {/* Render the Sidebar component. */}
+// <Sidebar />
+// {/* Render the Settings component, passing the boardName as a prop. */}
+// <div className="ml-5">
+//   <Settings boardName={boardName} />
+// </div>

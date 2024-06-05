@@ -60,23 +60,23 @@ const Settings: React.FC<SettingsProps> = ({ boardName }) => {
   return (
     <div className="p-4 flex">
       <div className="flex-1">
-        <h1 className="text-2xl mb-4 text-white">Settings for {boardName}</h1>
+        <h1 className="text-4xl mb-5 text-white">Settings for {boardName}</h1>
         <div>
-          <h2 className="text-xl mb-2 text-white">Collaborators</h2>
+          <h2 className="text-2xl mb-3 text-white">Collaborators</h2>
           <ul>
             {collaborators.map((email) => (
               <li key={email} className="text-white flex items-center justify-between">
                 {email}
                 <button
                   onClick={() => removeCollaborator(email)}
-                  className="text-red-500 font-bold bg-white px-3 rounded-full hover:bg-red-500 hover:text-white"
+                  className="text-red-500 font-extrabold px-3 rounded-full hover:bg-red-500 hover:text-white"
                 >
                   &ndash;
                 </button>
               </li>
             ))}
           </ul>
-          <div className="mt-4">
+          <div className="mt-8">
             <input
               type="email"
               value={newCollaborator}
