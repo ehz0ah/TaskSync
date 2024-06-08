@@ -1,15 +1,8 @@
 import { getClient } from "@/app/(platform)/_info/clientInfo";
-import TimeTree from "../../../_parts/calendar";
-import Sidebar from "@/components/sidebar";
 import { liveClient } from "@/app/(platform)/_info/liveinfo";
 import ShowError from "@/app/(platform)/_parts/error";
 
-export default async function Home({
-  params,
-}: {
-  params: { boardName: string };
-}) {
-  const { boardName } = params;
+export default async function CheckAccess({boardName}: {boardName: string}) {
   const session = await getClient();
   const userEmail = session?.user?.email as string;
   let boardInfo;
@@ -26,15 +19,6 @@ export default async function Home({
       <ShowError message="You do not have permission to access this workspace." />
     );
   }
-
-  return (
-    <div className="flex flex-row">
-      <Sidebar />
-      <div className="p-24">
-        <TimeTree />
-      </div>
-    </div>
-  );
 }
 
-// { params }: { params: { roomId: string } }
+// work in progress ! NOT USABLE !

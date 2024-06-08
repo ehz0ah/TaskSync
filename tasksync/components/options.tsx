@@ -1,7 +1,6 @@
+"use client"
 import React, { useState, useEffect } from "react";
-import { getClient } from "@/app/(platform)/_info/clientInfo";
 import { liveClient } from "@/app/(platform)/_info/liveinfo";
-import Sidebar from "./sidebar";
 
 type SettingsProps = {
   boardName: string;

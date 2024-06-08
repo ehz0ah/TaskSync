@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import SpeedDial from "./speeddial";
+
 
 type BoardProps = {
   name: string;
@@ -59,6 +61,8 @@ export const Board: React.FC<BoardProps> = ({
       <button className="text-2xl font-bold mb-4 text-white">
         <Link href={`/workspace/${roomId}/timetree`}>{name}</Link>
       </button>
+      {/* <SpeedDial name={name} /> */}
     </div>
   );
 };
+

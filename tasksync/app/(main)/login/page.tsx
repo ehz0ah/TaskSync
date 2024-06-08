@@ -54,10 +54,10 @@ export default function Login() {
               <input
                 autoComplete="email"
                 className="relative block w-full px-3 py-2 mb-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                defaultValue="Alex@gmail.com"
+                // defaultValue="Alex@gmail.com"
                 id="email-address"
                 name="email"
-                placeholder="Email address"
+                placeholder="Email Address"
                 required
                 type="email"
               />
@@ -69,7 +69,7 @@ export default function Login() {
               <input
                 autoComplete="current-password"
                 className="relative block w-full px-3 py-2 mb-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                defaultValue="********"
+                // defaultValue="********"
                 id="password"
                 name="password"
                 placeholder="Password"

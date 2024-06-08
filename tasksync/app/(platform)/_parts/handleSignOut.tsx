@@ -16,18 +16,10 @@ import { Fragment } from "react";
 export default function HandleSignOut() {
   const [isOpen, setIsOpen] = useState(false);
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
   return (
     <>
       <Button
-        onClick={openModal}
+        onClick={() => setIsOpen(true)}
         size="sm"
         className="ml-3 items-center gap-1 border border-white hover:bg-white hover:text-black"
       >
@@ -36,7 +28,7 @@ export default function HandleSignOut() {
       </Button>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
           <TransitionChild
             as={Fragment}
             enter="ease-out duration-300"
@@ -77,14 +69,14 @@ export default function HandleSignOut() {
                     <Button
                       onClick={() => {
                         signOut({ callbackUrl: "/" });
-                        closeModal();
+                        setIsOpen(false);
                       }}
                       className="text-black mr-2 bg-neutral-200 hover:bg-sky-400"
                     >
                       Yes
                     </Button>
                     <Button
-                      onClick={closeModal}
+                      onClick={() => setIsOpen(false)}
                       variant="secondary"
                       className="bg-neutral-200 hover:bg-red-500"
                     >
