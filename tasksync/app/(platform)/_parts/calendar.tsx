@@ -296,7 +296,7 @@ export default function TimeTree() {
   return (
     <>
       <main className="flex items-center justify-center h-full">
-        <div className="h-[99vh] aspect-square pt-24">
+        <div className="h-[99vh] aspect-square">   {/*pt-24*/}
           <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
             headerToolbar={{

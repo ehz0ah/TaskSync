@@ -17,9 +17,9 @@ type BoardType = {
 /**
  * Renders a carousel component that allows users to add, search, and delete boards.
  *
- * @return {ReactElement} The rendered carousel component.
+ * @return The rendered carousel component.
  */
-const Carousel: React.FC = () => {
+const Carousel = () => {
 
   // Define a state variable called 'boards' using the useState hook.
   // This state variable will hold an array of objects of type BoardType.
