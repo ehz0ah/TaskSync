@@ -6,6 +6,8 @@ import { FaPlus, FaSearch } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { deleteRoom, makeRoom, callRooms } from "./handlingRooms";
+import { RoomProvider } from "@/liveblocks.config";
+import { LiveList } from "@liveblocks/client";
 
 type BoardType = {
   id: number;
@@ -13,14 +15,12 @@ type BoardType = {
   roomId: string;
 };
 
-
 /**
  * Renders a carousel component that allows users to add, search, and delete boards.
  *
  * @return The rendered carousel component.
  */
 const Carousel = () => {
-
   // Define a state variable called 'boards' using the useState hook.
   // This state variable will hold an array of objects of type BoardType.
   // The initial value of the array is an empty array.
@@ -60,7 +60,7 @@ const Carousel = () => {
         // Attempt to call the callRooms function from the handlingRooms module.
         // This function returns a Promise that resolves to an array of rooms.
         const rooms = await callRooms();
-        
+
         // Map over each room in the array of rooms.
         // For each room, create a new object with the following properties:
         // - id: the index of the room in the array (starting from 0)
@@ -71,7 +71,7 @@ const Carousel = () => {
           name: room.metadata.workspaceName, // Assign the workspaceName property of the room's metadata as the name of the board
           roomId: room.id, // Assign the id of the room as the roomId of the board
         }));
-        
+
         // Update the state of the boards using the setBoards function.
         // Pass in the initialBoards array as the new state.
         setBoards(initialBoards);
@@ -84,9 +84,8 @@ const Carousel = () => {
     fetchRooms();
   }, []);
 
-
   /**
-   * Adds a new board to the carousel. 
+   * Adds a new board to the carousel.
    * The function first checks if a board with the same name already exists.
    * If it does, it displays an alert and returns without adding the board.
    * If the board name is not empty, it optimistically updates the UI by adding the new board.
@@ -100,7 +99,7 @@ const Carousel = () => {
     const boardIndex = boards.findIndex(
       (board) => board.name.toLowerCase() === newBoardName.toLowerCase()
     );
-    
+
     // If a board with the same name already exists, display an alert and return
     if (boardIndex !== -1) {
       window.alert(
@@ -108,16 +107,16 @@ const Carousel = () => {
       );
       return;
     }
-  
+
     // If the board name is not empty, proceed with adding the board
     if (newBoardName.trim() !== "") {
       // Generate a unique ID for the new board
       const id = boards.length ? boards[boards.length - 1].id + 1 : 0;
-      
+
       // Optimistically update the UI by adding the new board
       const newBoards = [...boards, { id, name: newBoardName, roomId: "" }];
       setBoards(newBoards);
-      
+
       // Navigate to the newly added board after a short delay to allow the UI to update
       setTimeout(() => {
         if (sliderRef.current) {
@@ -128,7 +127,7 @@ const Carousel = () => {
       try {
         // Attempt to create a new room in Liveblocks with the given name
         const roomId = await makeRoom(newBoardName);
-        
+
         // Update the board's roomId
         setBoards((prevBoards) =>
           prevBoards.map((board) =>
@@ -137,16 +136,17 @@ const Carousel = () => {
         );
       } catch (error) {
         console.error("Failed to create room", error);
-        
+
         // Optionally, revert the optimistic UI update if room creation fails
-        setBoards((prevBoards) => prevBoards.filter((board) => board.id !== id));
+        setBoards((prevBoards) =>
+          prevBoards.filter((board) => board.id !== id)
+        );
       }
-      
+
       // Reset the new board name input
       setNewBoardName("");
     }
   };
-  
 
   /**
    * Searches for a board with the given name by converting both the board name
@@ -175,10 +175,9 @@ const Carousel = () => {
     }
   };
 
-
   /**
    * Deletes a board with the given ID by optimistically updating the UI,
-   * deleting the board's associated room from Liveblocks, and reverting the 
+   * deleting the board's associated room from Liveblocks, and reverting the
    * optimistic update if the deletion fails.
    *
    * @param {number} id - The ID of the board to delete.
@@ -186,27 +185,26 @@ const Carousel = () => {
   const deleteBoard = async (id: number) => {
     // Find the board to delete based on its ID.
     const boardToDelete = boards.find((board) => board.id === id);
-    
+
     // If a board with the given ID is found, proceed with the deletion.
     if (boardToDelete) {
       // Optimistically update the UI by removing the board from the list of boards.
       setBoards(boards.filter((board) => board.id !== id));
-      
+
       try {
         // Attempt to delete the board's associated room from Liveblocks.
         await deleteRoom(boardToDelete.roomId);
-        
+
         // If the deletion is successful, the board is deleted.
       } catch (error) {
         // If the deletion fails, log the error.
         console.error("Failed to delete room", error);
-        
+
         // Optionally, revert the optimistic update by adding the board back to the list of boards.
         setBoards((prevBoards) => [...prevBoards, boardToDelete]);
       }
     }
   };
-
 
   /**
    * Clear all boards by deleting all the rooms from Liveblocks.
@@ -222,9 +220,7 @@ const Carousel = () => {
     try {
       // Delete all rooms from Liveblocks.
       // Promise.all() ensures that all deletions are executed in parallel.
-      await Promise.all(
-        currentBoards.map((board) => deleteRoom(board.roomId))
-      );
+      await Promise.all(currentBoards.map((board) => deleteRoom(board.roomId)));
     } catch (error) {
       // If any deletion fails, log the error.
       console.error("Failed to clear rooms", error);
@@ -276,11 +272,17 @@ const Carousel = () => {
         <Slider ref={sliderRef} {...settings}>
           {boards.map((board) => (
             <div key={board.id} className="p-4 flex justify-center">
-              <Board
-                name={board.name}
-                roomId={board.roomId}
-                onDelete={() => deleteBoard(board.id)}
-              />
+              <RoomProvider
+                id={board.name}
+                initialPresence={{ cursor: { x: 0, y: 0 } , message: ""}}
+                initialStorage={{ events: new LiveList() }}
+              >
+                <Board
+                  name={board.name}
+                  roomId={board.roomId}
+                  onDelete={() => deleteBoard(board.id)}
+                />
+              </RoomProvider>
             </div>
           ))}
         </Slider>

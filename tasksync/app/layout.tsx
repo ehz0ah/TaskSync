@@ -6,10 +6,7 @@ import { siteConfig } from "@/config/site";
 const inter = Bitter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`, // Workspace | TaskSync shortcut
-  },
+  title: siteConfig.name,
   description: siteConfig.description,
   icons: [
     {
@@ -30,3 +27,19 @@ export default function RootLayout({
     </html>
   );
 }
+
+/*
+export const metadata: Metadata = {
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`, // Workspace | TaskSync shortcut
+  },
+  description: siteConfig.description,
+  icons: [
+    {
+      url: "/logo2.svg",
+      href: "/logo2.svg",
+    },
+  ],
+};
+*/

@@ -1,10 +1,11 @@
-import { createClient } from "@liveblocks/client";
+/*
+import { createClient, LiveList, LiveObject } from "@liveblocks/client";
 import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
 
 const client = createClient({
-  publicApiKey: "pk_dev_C4lVteMIitcKi3l4wsssiuC16HJzd8yhLCY9cv5O6WrEWZjyQSx3EaxNTWp0ct9f",
-  // authEndpoint: "/api/liveblocks-auth",
-  // throttle: 100,
+  // publicApiKey: "pk_dev_C4lVteMIitcKi3l4wsssiuC16HJzd8yhLCY9cv5O6WrEWZjyQSx3EaxNTWp0ct9f",
+  authEndpoint: "/api/liveblocks-auth",
+  throttle: 100,
   async resolveUsers({ userIds }) {
     // Used only for Comments and Notifications. Return a list of user information
     // retrieved from `userIds`. This info is used in comments, mentions etc.
@@ -55,6 +56,14 @@ type Presence = {
   // ...
 };
 
+type Event = {
+  title: string
+  start: string
+  end?: string
+  allDay: boolean
+  id: number
+}
+
 // Optionally, Storage represents the shared document that persists in the
 // Room, even after all users leave. Fields under Storage typically are
 // LiveList, LiveMap, LiveObject instances, for which updates are
@@ -62,6 +71,7 @@ type Presence = {
 type Storage = {
   // author: LiveObject<{ firstName: string, lastName: string }>,
   // ...
+  events : LiveList<LiveObject<Event>>
 };
 
 // Optionally, UserMeta represents static/readonly metadata on each user, as
@@ -153,3 +163,79 @@ export const {
     useRoomInfo,
   },
 } = createLiveblocksContext<UserMeta, ThreadMetadata>(client);
+*/
+
+/*
+import { createClient } from "@liveblocks/client";
+import { createRoomContext } from "@liveblocks/react";
+
+const client = createClient({
+  // publicApiKey: "",
+  authEndpoint: "/api/liveblocks-auth",
+  // throttle: 100,
+});
+
+
+type Presence = {
+  // cursor: { x: number, y: number } | null,
+  // ...
+};
+
+
+type Storage = {
+  // animals: LiveList<string>,
+  // ...
+};
+
+
+
+export const {
+  RoomProvider,
+  useMyPresence,
+  useStorage,
+  useMutation,
+  
+} = createRoomContext<
+  Presence,
+  Storage
+  
+>(client);
+*/
+
+"use client";
+import { createClient, LiveList } from "@liveblocks/client";
+import { createRoomContext } from "@liveblocks/react";
+
+const client = createClient({
+  authEndpoint: "/api/auth/liveblocks-auth",
+  throttle: 100,
+});
+
+export type Presence = {
+  cursor: { x: number; y: number };
+  message: string;
+};
+
+type Event = {
+  title: string;
+  start: string;
+  end?: string;
+  allDay: boolean;
+  id: number;
+};
+
+type UserMeta = {
+  id: string;
+  info: { name: string; email: string; image: string };
+}
+
+
+type Storage = {
+  events: LiveList<Event>;
+};
+
+export const { RoomProvider, useMyPresence, useOthers, useStorage, useUpdateMyPresence, useMutation } =
+  createRoomContext<Presence, Storage>(client);
+
+// C:\Users\haozh\OneDrive\Documents\NUS\TaskSync\tasksync\app\api\auth\liveblocks-auth\route.ts
+// publicApiKey: "pk_dev_C4lVteMIitcKi3l4wsssiuC16HJzd8yhLCY9cv5O6WrEWZjyQSx3EaxNTWp0ct9f",
