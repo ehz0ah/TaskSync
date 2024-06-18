@@ -1,5 +1,18 @@
 import Sidebar from "@/components/sidebar";
 import Top from "../../_parts/top";
+import { Metadata } from "next";
+
+interface Props {
+  params: {
+    boardName: string;
+  };
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `TaskSync | ${params.boardName}`,
+  };
+};
 
 const BoardLayout = ({ children }: { children: React.ReactNode }) => {
   return (

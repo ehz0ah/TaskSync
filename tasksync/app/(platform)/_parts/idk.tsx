@@ -31,5 +31,4 @@ export default function HomeContent({ session }: { session: any }) {
   );
 }
 
-
 // Not ready to be used.

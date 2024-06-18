@@ -1,10 +1,12 @@
 import Link from "next/link";
-import React from "react";
+import React, { use, useEffect } from "react";
 import SpeedDial from "./speeddial";
+import { useUpdateMyPresence } from "@/liveblocks.config";
+import Avatars from "./avatars";
 
 
 type BoardProps = {
-  name: string;
+  name: string | null;
   roomId: string;
   onDelete: () => void;
 };
@@ -16,6 +18,12 @@ export const Board: React.FC<BoardProps> = ({
   roomId, // The ID of the room that the board belongs to.
   onDelete, // A function to handle deletion of the board.
 }) => {
+  // const updateMyPresence = useUpdateMyPresence();
+
+  // useEffect(() => {
+  //   updateMyPresence({ roomId });
+  // }, );
+
   return (
     // The board is represented by a div with a relative position.
     // The border and shadow styles are applied to create a visually appealing appearance.

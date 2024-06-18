@@ -7,8 +7,13 @@ import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import HomeContent from "../_parts/idk";
 import ShowError from "../_parts/error";
+import { Metadata } from "next";
 
 const Carousel = dynamic(() => import("../_parts/carousel"), { ssr: false });
+
+export const metadata: Metadata = {
+  title: "TaskSync | Workspace",
+};
 
 export default async function Home() {
   const session = await getServerSession(authOptions);

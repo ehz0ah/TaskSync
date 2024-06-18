@@ -73,6 +73,10 @@ body {
   }
 }
 
+.fc-event {
+  color: #ffffff; /* This sets the text color to white */
+}
+
 
 /* Customizing button text*/
 .fc .fc-button {
