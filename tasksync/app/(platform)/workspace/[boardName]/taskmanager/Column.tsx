@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card, { DropIndicator } from "./Card";
 import { motion } from "framer-motion";
+import { useMutation } from "@/liveblocks.config";
 export type card = {
   title: string;
   column: string;
@@ -10,14 +11,24 @@ export type card = {
 interface Prop {
   title: string;
   headingColor: string;
-  column: any;
-  cards: any;
+  column: string;
+  cards:
+    | readonly {
+        readonly title: string;
+        readonly column: string;
+        readonly id: string;
+      }[]
+    | null
+    | undefined;
   setCards: any;
 }
 
 const AddCard = ({ column, setCards, cards }: Prop) => {
   const [text, setText] = useState("");
   const [adding, setAdding] = useState(false);
+  const pushCard = useMutation(({ storage }, newCard: card) => {
+    storage.get("cards")?.push(newCard);
+  }, []);
   function handleSubmit(event: any) {
     event.preventDefault();
     if (!text.trim().length) return;
@@ -26,7 +37,7 @@ const AddCard = ({ column, setCards, cards }: Prop) => {
       id: Math.random().toString(),
       column,
     };
-    setCards([...cards, newCard]);
+    pushCard(newCard);
     setAdding(false);
   }
   return (
@@ -51,7 +62,6 @@ const AddCard = ({ column, setCards, cards }: Prop) => {
               className="flex items-center gap-1.5 rounded bg-neutral-50 px-3 py-1.5 text-xs text-neutral-950 transition-colors hover:bg-neutral-300"
             >
               <span>Add</span>
-              {/* <FiPlus /> */}
             </button>
           </div>
         </motion.form>
@@ -70,15 +80,15 @@ const AddCard = ({ column, setCards, cards }: Prop) => {
 
 const Column = ({ title, headingColor, column, cards, setCards }: Prop) => {
   const [active, setActive] = useState(false);
+  const [edit, setEdit] = useState(false);
   const handleDragStart = (event: any, card: card) => {
     event.dataTransfer.setData("cardId", card.id);
   };
-  const filteredCards = cards.filter((card: card) => card.column === column);
-  const handleDelete = (inputCard: card) => {
-    setCards((cards: card[]) =>
-      cards.filter((card: card) => card.id != inputCard.id)
-    );
-  };
+  const filteredCards = cards?.filter((card: card) => card.column === column);
+  const handleDelete = useMutation(({ storage }, inputCard: card) => {
+    const cards = storage.get("cards");
+    cards?.delete(cards.findIndex((card: card) => card.id === inputCard.id));
+  }, []);
   const handleDragOver = (e: any) => {
     e.preventDefault();
     highlightIndicator(e);
@@ -90,7 +100,6 @@ const Column = ({ title, headingColor, column, cards, setCards }: Prop) => {
     const el = getNearestIndicator(e, indicators);
     el.element.style.opacity = "1";
   };
-
   const clearHighlights = (els?: any) => {
     const indicators = els || getIndicators();
 
@@ -98,7 +107,6 @@ const Column = ({ title, headingColor, column, cards, setCards }: Prop) => {
       i.style.opacity = "0";
     });
   };
-
   const getNearestIndicator = (e: any, indicators: Element[]) => {
     const DISTANCE_OFFSET = 50;
     const el = indicators.reduce(
@@ -118,16 +126,13 @@ const Column = ({ title, headingColor, column, cards, setCards }: Prop) => {
     );
     return el;
   };
-
   const getIndicators = () => {
     return Array.from(document.querySelectorAll(`[data-column="${column}"]`));
   };
-
   const handleDragLeave = (e: any) => {
     setActive(false);
     clearHighlights();
   };
-
   const handleDragEnd = (e: any) => {
     setActive(false);
     clearHighlights();
@@ -135,8 +140,7 @@ const Column = ({ title, headingColor, column, cards, setCards }: Prop) => {
     const indicators = getIndicators();
     const { element } = getNearestIndicator(e, indicators);
     const before = element == undefined ? "-1" : element.dataset.before;
-    console.log(before);
-    if (before != cardId) {
+    if (before != cardId && cards) {
       let copy = [...cards];
       let cardToTransfer = copy.find((c) => c.id === cardId);
       if (!cardToTransfer) return;
@@ -154,12 +158,16 @@ const Column = ({ title, headingColor, column, cards, setCards }: Prop) => {
       setCards(copy);
     }
   };
+  const handleSubmit = (inputCard: card) => {
+    // if (!inputCard.title.trim().length) return;
+    setEdit(false);
+  };
   return (
     <div className="w-56 shrink-0">
       <div className="mb-3 flex items-center justify-between">
         <h3 className={`font-medium ${headingColor}`}>{title}</h3>
         <span className="rounded text-sm text-neutral-400">
-          {filteredCards.length}
+          {filteredCards?.length}
         </span>
       </div>
       <div
@@ -170,13 +178,14 @@ const Column = ({ title, headingColor, column, cards, setCards }: Prop) => {
           active ? "bg-neutral-800/50" : "bg-neutral-800/0"
         }`}
       >
-        {filteredCards.map((card: card) => {
+        {filteredCards?.map((card: card) => {
           return (
             <Card
               key={card.id}
               {...card}
               handleDragStart={handleDragStart}
               handleDelete={handleDelete}
+              handleEdit={handleSubmit}
             />
           );
         })}

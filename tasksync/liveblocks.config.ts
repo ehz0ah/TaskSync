@@ -224,6 +224,13 @@ type Event = {
   id: number;
 };
 
+type Card = {
+  title: string;
+  column: string;
+  id: string;
+}
+
+
 type UserMeta = {
   id: string;
   info: { name: string; email: string; image: string };
@@ -231,7 +238,8 @@ type UserMeta = {
 
 
 type Storage = {
-  events: LiveList<Event>;
+  events?: LiveList<Event>;
+  cards?: LiveList<Card>
 };
 
 export const { RoomProvider, useMyPresence, useOthers, useStorage, useUpdateMyPresence, useMutation } =

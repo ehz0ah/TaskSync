@@ -13,7 +13,13 @@ import {
 } from "@headlessui/react";
 import { CheckIcon, ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 import { EventSourceInput } from "@fullcalendar/core";
-import { RoomProvider, useStorage, useMutation, useMyPresence, useOthers } from "@/liveblocks.config";
+import {
+  RoomProvider,
+  useStorage,
+  useMutation,
+  useMyPresence,
+  useOthers,
+} from "@/liveblocks.config";
 import { LiveList } from "@liveblocks/client";
 import Image from "next/image";
 
@@ -44,23 +50,24 @@ export default function TimeTree({ id }: { id: string }) {
 
   const addEventMutation = useMutation(({ storage }, event: Event) => {
     const events = storage.get("events");
-    events.push(event);
+    events?.push(event);
   }, []);
 
   const deleteEventMutation = useMutation(({ storage }, eventId: number) => {
     const events = storage.get("events");
-    const index = events.findIndex((event) => event.id === eventId);
+    const index = events?.findIndex((event) => event.id === eventId) || -1;
     if (index !== -1) {
-      events.delete(index);
+      events?.delete(index);
     }
   }, []);
 
   const updateEventMutation = useMutation(
     ({ storage }, updatedEvent: Event) => {
       const events = storage.get("events");
-      const index = events.findIndex((event) => event.id === updatedEvent.id);
+      const index =
+        events?.findIndex((event) => event.id === updatedEvent.id) || -1;
       if (index !== -1) {
-        events.set(index, updatedEvent);
+        events?.set(index, updatedEvent);
       }
     },
     []
@@ -86,9 +93,9 @@ export default function TimeTree({ id }: { id: string }) {
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === '/') {
+      if (event.key === "/") {
         setChatOpen(true);
-      } else if (event.key === 'Escape') {
+      } else if (event.key === "Escape") {
         setChatOpen(false);
         updateMyPresence({ message: "" });
       }
@@ -183,11 +190,13 @@ export default function TimeTree({ id }: { id: string }) {
   return (
     <RoomProvider
       id={id}
-      initialPresence={{ cursor: { x: 0, y: 0 } , message: "" }}
+      initialPresence={{ cursor: { x: 0, y: 0 }, message: "" }}
       initialStorage={{ events: new LiveList() }}
     >
       <main className="flex items-center justify-center h-full">
-        <div className="h-[99vh] aspect-square">  {/*relative*/}
+        <div className="h-[99vh] aspect-square">
+          {" "}
+          {/*relative*/}
           <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
             headerToolbar={{
@@ -240,10 +249,15 @@ export default function TimeTree({ id }: { id: string }) {
                       left: presence.cursor.x,
                       transition: "transform 0.1s linear",
                       transform: "translate(-50%, -50%)",
-                      pointerEvents: "none"
+                      pointerEvents: "none",
                     }}
                   >
-                    <Image src="/cursor2.svg" alt="cursor" width={"25"} height={"25"} />
+                    <Image
+                      src="/cursor2.svg"
+                      alt="cursor"
+                      width={"25"}
+                      height={"25"}
+                    />
                     {/*
                     <svg
                       width="20"
