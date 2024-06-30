@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card, { DropIndicator } from "./Card";
 import { motion } from "framer-motion";
 import { useMutation } from "@/liveblocks.config";
+
 export type card = {
   title: string;
   column: string;
@@ -20,10 +21,10 @@ interface Prop {
       }[]
     | null
     | undefined;
-  setCards: any;
+  setCards: (cards: card[]) => void;
 }
 
-const AddCard = ({ column, setCards, cards }: Prop) => {
+const AddCard = ({ column }: Prop) => {
   const [text, setText] = useState("");
   const [adding, setAdding] = useState(false);
   const pushCard = useMutation(({ storage }, newCard: card) => {
@@ -154,14 +155,18 @@ const Column = ({ title, headingColor, column, cards, setCards }: Prop) => {
         if (insertAtIndex === undefined) return;
         copy.splice(insertAtIndex, 0, cardToTransfer);
       }
-
       setCards(copy);
     }
   };
-  const handleSubmit = (inputCard: card) => {
-    // if (!inputCard.title.trim().length) return;
+  const handleSubmit = useMutation(({ storage }, inputCard: card) => {
+    if (!inputCard.title.trim().length) return;
+    const cards = storage.get("cards");
+    cards?.set(
+      cards?.findIndex((card: card) => card.id === inputCard.id),
+      inputCard
+    );
     setEdit(false);
-  };
+  }, []);
   return (
     <div className="w-56 shrink-0">
       <div className="mb-3 flex items-center justify-between">

@@ -1,12 +1,11 @@
 "use client";
 import Board from "./Board";
-import React, { PointerEventHandler } from "react";
+import React from "react";
 import { useMyPresence, useOthers } from "@/liveblocks.config";
 import Image from "next/image";
 
 function Kanban() {
   const others = useOthers();
-  const userCount = others.length;
   const [myPresence, updateMyPresence] = useMyPresence();
   const handlePointerMove = (e: any) => {
     const cursor = { x: Math.floor(e.clientX), y: Math.floor(e.clientY) };
@@ -34,8 +33,8 @@ function Kanban() {
                 key={connectionId}
                 style={{
                   position: "absolute",
-                  top: presence.cursor.y ? presence.cursor.y : 0,
-                  left: presence.cursor.x ? presence.cursor.x : 0,
+                  top: presence.cursor ? presence.cursor.y : 0,
+                  left: presence.cursor ? presence.cursor.x : 0,
                   transition: "transform 0.1s linear",
                   transform: "translate(-50%, -50%)",
                   pointerEvents: "none",

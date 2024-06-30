@@ -205,16 +205,57 @@ export const {
 "use client";
 import { createClient, LiveList } from "@liveblocks/client";
 import { createRoomContext } from "@liveblocks/react";
+import {UserData} from "app/userRoute/route"
+import { useEffect, useState } from "react";
+
+
 
 const client = createClient({
   authEndpoint: "/api/auth/liveblocks-auth",
   throttle: 100,
-});
+  resolveUsers: async ({userIds}) =>  {
+    try {
+      const response = await fetch('/userRoute', { method: 'GET'});
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const {usersData} = await response.json();
+  
+      console.log("Fetched usersData:", usersData);
+      console.log(userIds)
+      const usersDataArray = Array.isArray(usersData) ? usersData : Object.values<UserData>(usersData);
+      console.log(usersDataArray[1])
+      // Filter usersData based on userIds
+      const userList = usersDataArray.filter((userData) => userIds.includes(userData.email))
+      console.log("Filtered userList:", userList);
+  
+      // Map filtered userList to required format
+      const formattedUsers = userList.map(userData => ({
+        name: userData.name,
+        avatar: userData.image
+      }));
+  
+      return formattedUsers;
+    } catch (error) {
+      console.error("Error fetching or processing users:", error);
+      throw error; // Optionally rethrow the error for higher level handling
+    }
+    // return userIds.map((userId) => ({
+    //   name: userId
+    // }))
+  }
+  });
 
 export type Presence = {
   cursor: { x: number; y: number };
   message: string;
 };
+
+export type ThreadMetadata = {
+  resolved: boolean
+  cardId: string
+}
+
 
 type Event = {
   title: string;
@@ -233,7 +274,7 @@ type Card = {
 
 type UserMeta = {
   id: string;
-  info: { name: string; email: string; image: string };
+  info: { name: string; avatar: string };
 }
 
 
@@ -242,8 +283,8 @@ type Storage = {
   cards?: LiveList<Card>
 };
 
-export const { RoomProvider, useMyPresence, useOthers, useStorage, useUpdateMyPresence, useMutation } =
-  createRoomContext<Presence, Storage>(client);
+export const { RoomProvider, useMyPresence, useOthers, useStorage, useUpdateMyPresence, useMutation, useThreads, useCreateThread } =
+  createRoomContext<Presence, Storage, UserMeta, never, ThreadMetadata>(client);
 
 // C:\Users\haozh\OneDrive\Documents\NUS\TaskSync\tasksync\app\api\auth\liveblocks-auth\route.ts
 // publicApiKey: "pk_dev_C4lVteMIitcKi3l4wsssiuC16HJzd8yhLCY9cv5O6WrEWZjyQSx3EaxNTWp0ct9f",
