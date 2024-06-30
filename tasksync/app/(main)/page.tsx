@@ -15,7 +15,7 @@ import { Metadata } from "next";
 export default function MainPage() {
   return (
     // The main page is a flex container with a column layout.
-    <div className="flex items-center justify-center flex-col bg-black">
+    <div className="flex items-center justify-center flex-col">
       <div className="flex items-center justify-center flex-col">
         {/* The welcome message is a container with a rounded background. */}
         <div className="relative rounded-2xl py-2 px-4">
