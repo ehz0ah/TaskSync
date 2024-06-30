@@ -16,7 +16,8 @@ export default function Login() {
           <div>
             <Button
               onClick={() => {
-                signIn("google", { callbackUrl: "/workspace" });
+                // signIn("google", { callbackUrl: "/workspace" });
+                window.alert("SORRY YOU ARE BANNED FROM USING THIS APPLICATION");
               }}
               className="relative flex items-center justify-center w-full px-4 py-2 mb-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg group hover:bg-gray-50"
             >
@@ -54,7 +55,6 @@ export default function Login() {
               <input
                 autoComplete="email"
                 className="relative block w-full px-3 py-2 mb-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                // defaultValue="Alex@gmail.com"
                 id="email-address"
                 name="email"
                 placeholder="Email Address"
@@ -69,7 +69,6 @@ export default function Login() {
               <input
                 autoComplete="current-password"
                 className="relative block w-full px-3 py-2 mb-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                // defaultValue="********"
                 id="password"
                 name="password"
                 placeholder="Password"
