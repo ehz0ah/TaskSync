@@ -9,7 +9,7 @@ export const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <Logo textColour="text-white" />
         <nav className="hover:opacity-90 text-md hidden md:flex gap-x-16 mr-24 text-white font-medium">
-          <Link href="/about">About</Link>
+          <Link href="/about">About Us</Link>
           <Link href="/pricing">Pricing</Link>
           <Link href="/features">Features</Link>
         </nav>

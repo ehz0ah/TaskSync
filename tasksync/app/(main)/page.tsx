@@ -53,7 +53,7 @@ export default function MainPage() {
         className="mt-8 outline rounded-lg outline-violet-300 hover:bg-white hover:text-black hover:border-transparent"
         size="sm"
       >
-        <Link href="/login">Get TaskSync For Free</Link>
+        <Link href="/pricing">Get TaskSync Now </Link>
       </Button>
 
       {/* The image below the button is displayed using the Image component. */}

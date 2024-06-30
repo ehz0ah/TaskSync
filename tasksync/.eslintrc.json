@@ -1,3 +1,12 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "overrides": [
+    {
+      "files": ["__mocks__/**/*.ts", "__mocks__/**/*.tsx"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "react/display-name": "off"
+      }
+    }
+  ]
 }

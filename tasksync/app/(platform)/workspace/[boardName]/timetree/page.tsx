@@ -48,9 +48,8 @@ import { liveClient } from "@/app/(platform)/_info/liveinfo";
 import ShowError from "@/app/(platform)/_parts/error";
 import { RoomProvider } from "@/liveblocks.config";
 import { LiveList } from "@liveblocks/client";
-import { ClientSideSuspense } from "@liveblocks/react";
 
-export default async function Home({
+export default async function CalendarPage({
   params,
 }: {
   params: { boardName: string };

@@ -7,9 +7,9 @@ export const Footer = () => {
         Copyright &copy; 2024 TaskSync. All rights reserved.
       </p>
       <nav className="text-l hidden md:flex gap-x-16 mr-24 pr-20 pt-11">
-        <Link href="/privacy">Privacy</Link>
-        <Link href="/termsofuse">Terms of Use</Link>
-        <Link href="/contact">Contact</Link>
+        <Link href="/">Privacy</Link>
+        <Link href="/">Terms of Use</Link>
+        <Link href="/">Contact</Link>
       </nav>
       <p className="mr-10 text-l pt-11">Singapore | English</p>
     </footer>

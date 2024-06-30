@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "TaskSync | Workspace",
 };
 
-export default async function Home() {
+export default async function PlatformPage() {
   const session = await getServerSession(authOptions);
   if (!session) {
     return <ShowError dir="/" />;
