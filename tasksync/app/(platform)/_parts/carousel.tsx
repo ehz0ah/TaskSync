@@ -268,13 +268,13 @@ const Carousel = () => {
           <FaSearch />
         </button>
       </div>
-      <div className="w-[100vh]">
+      <div className="w-[130vh]">
         <Slider ref={sliderRef} {...settings}>
           {boards.map((board) => (
             <div key={board.id} className="p-4 flex justify-center">
               <RoomProvider
                 id={board.name}
-                initialPresence={{ cursor: { x: 0, y: 0 } , message: ""}}
+                initialPresence={{ cursor: { x: 0, y: 0 }, message: "" }}
                 initialStorage={{ events: new LiveList() }}
               >
                 <Board
