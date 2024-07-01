@@ -196,7 +196,7 @@ export default function TimeTree({ id }: { id: string }) {
       initialStorage={{ events: new LiveList() }}
     >
       <main className="flex items-center justify-center h-full">
-        <div className="h-[99vh] aspect-square">  {/*relative*/}
+        <div className="h-[99vh] aspect-square">  {/*relative*/
 //           <FullCalendar
 //             plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
 //             headerToolbar={{
@@ -423,9 +423,9 @@ export default function TimeTree({ id }: { id: string }) {
 //                               type="text"
 //                               name="title"
 //                               className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-2
-//                             shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
-//                             focus:ring-2 
-//                             focus:ring-inset focus:ring-violet-600 
+//                             shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+//                             focus:ring-2
+//                             focus:ring-inset focus:ring-violet-600
 //                             sm:text-sm sm:leading-6"
 //                               value={newEvent.title}
 //                               onChange={(e) => handleChange(e)}
@@ -517,23 +517,27 @@ export default function TimeTree({ id }: { id: string }) {
 
   const addEventMutation = useMutation(({ storage }, event: Event) => {
     const events = storage.get("events");
-    events.push(event);
+    events?.push(event);
   }, []);
 
   const deleteEventMutation = useMutation(({ storage }, eventId: number) => {
     const events = storage.get("events");
-    const index = events.findIndex((event) => event.id === eventId);
-    if (index !== -1) {
-      events.delete(index);
+    if (events) {
+      const index = events.findIndex((event) => event.id === eventId);
+      if (index !== -1 && events) {
+        events.delete(index);
+      }
     }
   }, []);
 
   const updateEventMutation = useMutation(
     ({ storage }, updatedEvent: Event) => {
       const events = storage.get("events");
-      const index = events.findIndex((event) => event.id === updatedEvent.id);
-      if (index !== -1) {
-        events.set(index, updatedEvent);
+      if (events) {
+        const index = events.findIndex((event) => event.id === updatedEvent.id);
+        if (index !== -1) {
+          events.set(index, updatedEvent);
+        }
       }
     },
     []
