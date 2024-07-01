@@ -25,28 +25,22 @@ function Kanban() {
           .filter((other) => other.presence.cursor !== null)
           .map(({ connectionId, presence }) => (
             <div
-              style={{ width: "100vw", height: "100vh" }}
-              onPointerMove={handlePointerMove}
-              onPointerLeave={handlePointerLeave}
+              key={connectionId}
+              style={{
+                position: "absolute",
+                top: presence.cursor ? presence.cursor.y : 0,
+                left: presence.cursor ? presence.cursor.x : 0,
+                transition: "transform 0.1s linear",
+                transform: "translate(-50%, -50%)",
+                pointerEvents: "none",
+              }}
             >
-              <div
-                key={connectionId}
-                style={{
-                  position: "absolute",
-                  top: presence.cursor ? presence.cursor.y : 0,
-                  left: presence.cursor ? presence.cursor.x : 0,
-                  transition: "transform 0.1s linear",
-                  transform: "translate(-50%, -50%)",
-                  pointerEvents: "none",
-                }}
-              >
-                <Image
-                  src="/cursor2.svg"
-                  alt="cursor"
-                  width={"25"}
-                  height={"25"}
-                />
-              </div>
+              <Image
+                src="/cursor2.svg"
+                alt="cursor"
+                width={"25"}
+                height={"25"}
+              />
             </div>
           ))}
       </div>
