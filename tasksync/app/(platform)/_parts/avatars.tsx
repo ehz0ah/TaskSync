@@ -16,8 +16,8 @@ export default function Avatars({ presenceKey, presenceValue }: AvatarsProps) {
   return (
     <div className="flex gap-1">
       {others.map((user) => (
-        <div key = {user.id}>
-          <Image src={user.info?.image as string} alt="avater" />
+        <div key={user.id}>
+          <Image src={user.info?.avatar as string} alt="avater" />
         </div>
       ))}
     </div>
