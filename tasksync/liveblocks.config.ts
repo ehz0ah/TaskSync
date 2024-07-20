@@ -220,21 +220,14 @@ const client = createClient({
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const {usersData} = await response.json();
-  
-      console.log("Fetched usersData:", usersData);
-      console.log(userIds)
-      const usersDataArray = Array.isArray(usersData) ? usersData : Object.values<UserData>(usersData);
-      console.log(usersDataArray[1])
-      // Filter usersData based on userIds
-      const userList = usersDataArray.filter((userData) => userIds.includes(userData.email))
-      console.log("Filtered userList:", userList);
-  
-      // Map filtered userList to required format
-      const formattedUsers = userList.map(userData => ({
-        name: userData.name,
-        avatar: userData.image
-      }));
-  
+      const usersDataArray: UserData[] = Array.isArray(usersData) ? usersData : Object.values<UserData>(usersData);
+      const formattedUsers: {name: string, avatar: string}[] = [];
+      for (let index = 0; index < userIds.length; index++) {
+        const checker = usersDataArray.find((userData) => userData.email === userIds[index]);
+        if (checker) {
+          formattedUsers.push({name: checker.name, avatar: checker.image})
+        }
+      }
       return formattedUsers;
     } catch (error) {
       console.error("Error fetching or processing users:", error);
@@ -265,7 +258,7 @@ type Event = {
   id: number;
 };
 
-type Card = {
+export type Card = {
   title: string;
   column: string;
   id: string;

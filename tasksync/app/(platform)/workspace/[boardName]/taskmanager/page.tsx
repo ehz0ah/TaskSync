@@ -1,7 +1,7 @@
 import { getClient } from "@/app/(platform)/_info/clientInfo";
 import Kanban from "./kanban";
 import Sidebar from "@/components/sidebar";
-import { RoomProvider } from "@/liveblocks.config";
+import { RoomProvider, Card } from "@/liveblocks.config";
 import { liveClient } from "@/app/(platform)/_info/liveinfo";
 import ShowError from "@/app/(platform)/_parts/error";
 import { LiveList } from "@liveblocks/client";
