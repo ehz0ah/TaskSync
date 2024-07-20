@@ -34,7 +34,7 @@ export default async function Page({
       <RoomProvider
         id={boardName}
         initialPresence={{ cursor: { x: 0, y: 0 }, message: "" }}
-        initialStorage={{ cards: new LiveList() }}
+        initialStorage={{ events: new LiveList(), cards: new LiveList() }}
       >
         <div className="p-24">
           <Kanban />
