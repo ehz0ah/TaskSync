@@ -272,17 +272,17 @@ const Carousel = () => {
         <Slider ref={sliderRef} {...settings}>
           {boards.map((board) => (
             <div key={board.id} className="p-4 flex justify-center">
-              {/* <RoomProvider
+              <RoomProvider
                 id={board.name}
                 initialPresence={{ cursor: { x: 0, y: 0 }, message: "" }}
-                initialStorage={{ events: new LiveList() }}
-              > */}
+                initialStorage={{ events: new LiveList() , cards: new LiveList() }}
+              >
                 <Board
                   name={board.name}
                   roomId={board.roomId}
                   onDelete={() => deleteBoard(board.id)}
                 />
-              {/* </RoomProvider> */}
+              </RoomProvider>
             </div>
           ))}
         </Slider>
