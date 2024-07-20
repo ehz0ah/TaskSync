@@ -79,7 +79,7 @@ export default async function CalendarPage({
         <RoomProvider
           id={boardName}
           initialPresence={{ cursor: { x: 0, y: 0 }, message: "" }}
-          initialStorage={{ events: new LiveList() }}
+          initialStorage={{ events: new LiveList([]), cards: new LiveList([]) }}
         >
           <TimeTree id={boardName} />
         </RoomProvider>
