@@ -275,7 +275,10 @@ const Carousel = () => {
               <RoomProvider
                 id={board.name}
                 initialPresence={{ cursor: { x: 0, y: 0 }, message: "" }}
-                initialStorage={{ events: new LiveList() , cards: new LiveList() }}
+                initialStorage={{
+                  events: new LiveList(),
+                  cards: new LiveList(),
+                }}
               >
                 <Board
                   name={board.name}
