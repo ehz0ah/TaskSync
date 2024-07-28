@@ -268,7 +268,7 @@ const Carousel = () => {
           <FaSearch />
         </button>
       </div>
-      <div className="w-[130vh]">
+      <div className="w-[120vh]">
         <Slider ref={sliderRef} {...settings}>
           {boards.map((board) => (
             <div key={board.id} className="p-4 flex justify-center">

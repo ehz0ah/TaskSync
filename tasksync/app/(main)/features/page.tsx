@@ -4,9 +4,7 @@ const FeaturesPage: React.FC = () => {
   return (
     <section className="bg-transparent text-white">
       <div className="mx-auto max-w-screen-xl px-2 py-4 sm:px-4 sm:py-8 lg:px-6 lg:py-10">
-        <div className="mx-auto max-w-lg text-center">
-          {/* <h2 className="text-3xl font-bold sm:text-4xl">Our Features</h2> */}
-        </div>
+        <div className="mx-auto max-w-lg text-center"></div>
         <FeaturesList />
         <div className="mt-8 text-center">
           <a

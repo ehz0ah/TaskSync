@@ -2,7 +2,11 @@ import { getClient } from "@/app/(platform)/_info/clientInfo";
 import { liveClient } from "@/app/(platform)/_info/liveinfo";
 import ShowError from "@/app/(platform)/_parts/error";
 
-export default async function CheckAccess({boardName}: {boardName: string}) {
+export default async function CheckAccess({
+  boardName,
+}: {
+  boardName: string;
+}) {
   const session = await getClient();
   const userEmail = session?.user?.email as string;
   let boardInfo;
@@ -20,5 +24,3 @@ export default async function CheckAccess({boardName}: {boardName: string}) {
     );
   }
 }
-
-// work in progress ! NOT USABLE !

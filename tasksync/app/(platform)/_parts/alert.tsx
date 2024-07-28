@@ -54,28 +54,6 @@ const Alert: React.FC<AlertProps> = ({ message }) => {
             {message}
           </p>
         </div>
-        {/*
-        <button
-          onClick={onClose}
-          className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500"
-          aria-label="Dismiss popup"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="h-6 w-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-  */}
       </div>
     </div>
   );

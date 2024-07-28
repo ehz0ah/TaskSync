@@ -1,5 +1,5 @@
-import React from 'react';
-import { Feature } from './types';
+import React from "react";
+import { Feature } from "./types";
 
 interface FeatureListProps {
   features: Feature[];
@@ -21,7 +21,9 @@ const FeatureList: React.FC<FeatureListProps> = ({ features }) => {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className={`size-4 ${feature.included ? 'text-indigo-700' : 'text-red-700'}`}
+              className={`size-4 ${
+                feature.included ? "text-indigo-700" : "text-red-700"
+              }`}
             >
               {feature.included ? (
                 <path

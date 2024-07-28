@@ -2,13 +2,12 @@ import Logo from "@/components/logo";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import HandleSignOut from "./handleSignOut";
-import { redirect } from "next/navigation";
 import ShowError from "./error";
 
 export default async function Top() {
   const session = await getServerSession(authOptions);
   if (!session) {
-    return <ShowError dir ="/"/>;
+    return <ShowError dir="/" />;
   }
 
   return (

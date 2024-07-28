@@ -1,108 +1,48 @@
-/*
-import React from 'react';
-import PlanCard from './plancard';
-import { Plan } from './types';
+import React from "react";
+import PlanCard from "./plancard";
+import { Plan } from "./types";
 
 const plans: Plan[] = [
   {
-    title: 'Starter',
-    description: 'Basic real-time collaboration for individuals, small teams or start-ups. Includes core features, limited users, and basic support.',
-    price: { amount: '$20' },
+    title: "Starter",
+    description:
+      "Basic real-time collaboration for individuals, small teams or start-ups. Includes core features, limited users, and basic support.",
+    price: { amount: "$20" },
     features: [
-      { text: '10 users', included: true },
-      { text: '2GB of storage', included: true },
-      { text: 'Email support', included: true },
-      { text: 'Help center access', included: false },
-      { text: 'Phone support', included: false },
-      { text: 'Community access', included: false },
+      { text: "10 users", included: true },
+      { text: "2GB of storage", included: true },
+      { text: "Email support", included: true },
+      { text: "Help center access", included: false },
+      { text: "Phone support", included: false },
+      { text: "Community access", included: false },
     ],
   },
   {
-    title: 'Pro',
-    description: 'Advanced collaboration tools for growing businesses. More users, enhanced features, priority support, and increased storage.',
-    price: { amount: '$30' },
+    title: "Pro",
+    description:
+      "Advanced collaboration tools for growing businesses. More users, enhanced features, priority support, and increased storage.",
+    price: { amount: "$30" },
     features: [
-      { text: '20 users', included: true },
-      { text: '5GB of storage', included: true },
-      { text: 'Email support', included: true },
-      { text: 'Help center access', included: true },
-      { text: 'Phone support', included: false },
-      { text: 'Community access', included: false },
+      { text: "20 users", included: true },
+      { text: "5GB of storage", included: true },
+      { text: "Email support", included: true },
+      { text: "Help center access", included: true },
+      { text: "Phone support", included: false },
+      { text: "Community access", included: false },
     ],
   },
   {
-    title: 'Enterprise',
-    description: 'Customizable solution for large organizations. Even more users, full feature set, dedicated support, advanced security, and integration options.',
-    price: { amount: '$100' },
+    title: "Enterprise",
+    description:
+      "Customizable solution for large organizations. Even more users, full feature set, dedicated support, advanced security, and integration options.",
+    price: { amount: "$100" },
     features: [
-      { text: '50 users', included: true },
-      { text: '20GB of storage', included: true },
-      { text: 'Email support', included: true },
-      { text: 'Help center access', included: true },
-      { text: 'Phone support', included: true },
-      { text: 'Community access', included: true },
-    ],
-  },
-];
-
-const HomePage: React.FC = () => {
-  return (
-    <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-stretch md:grid-cols-3 md:gap-8">
-        {plans.map((plan, index) => (
-          <PlanCard key={index} plan={plan} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default HomePage;
-*/
-
-// pages/index.tsx
-import React from 'react';
-import PlanCard from './plancard'; 
-import { Plan } from './types';
-
-const plans: Plan[] = [
-  {
-    title: 'Starter',
-    description: 'Basic real-time collaboration for individuals, small teams or start-ups. Includes core features, limited users, and basic support.',
-    price: { amount: '$20' },
-    features: [
-      { text: '10 users', included: true },
-      { text: '2GB of storage', included: true },
-      { text: 'Email support', included: true },
-      { text: 'Help center access', included: false },
-      { text: 'Phone support', included: false },
-      { text: 'Community access', included: false },
-    ],
-  },
-  {
-    title: 'Pro',
-    description: 'Advanced collaboration tools for growing businesses. More users, enhanced features, priority support, and increased storage.',
-    price: { amount: '$30' },
-    features: [
-      { text: '20 users', included: true },
-      { text: '5GB of storage', included: true },
-      { text: 'Email support', included: true },
-      { text: 'Help center access', included: true },
-      { text: 'Phone support', included: false },
-      { text: 'Community access', included: false },
-    ],
-  },
-  {
-    title: 'Enterprise',
-    description: 'Customizable solution for large organizations. Even more users, full feature set, dedicated support, advanced security, and integration options.',
-    price: { amount: '$100' },
-    features: [
-      { text: '50 users', included: true },
-      { text: '20GB of storage', included: true },
-      { text: 'Email support', included: true },
-      { text: 'Help center access', included: true },
-      { text: 'Phone support', included: true },
-      { text: 'Community access', included: true },
+      { text: "50 users", included: true },
+      { text: "20GB of storage", included: true },
+      { text: "Email support", included: true },
+      { text: "Help center access", included: true },
+      { text: "Phone support", included: true },
+      { text: "Community access", included: true },
     ],
   },
 ];

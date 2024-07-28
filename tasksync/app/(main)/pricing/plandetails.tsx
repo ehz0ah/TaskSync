@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface PlanDetailsProps {
   title: string;
@@ -8,7 +8,11 @@ interface PlanDetailsProps {
   };
 }
 
-const PlanDetails: React.FC<PlanDetailsProps> = ({ title, description, price }) => {
+const PlanDetails: React.FC<PlanDetailsProps> = ({
+  title,
+  description,
+  price,
+}) => {
   return (
     <div className="p-4 sm:px-6">
       <h2 className="text-md font-medium text-white">
@@ -16,13 +20,11 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ title, description, price }) 
         <span className="sr-only">Plan</span>
       </h2>
 
-      <p className="mt-1 text-sm text-white">
-        {description}
-      </p>
+      <p className="mt-1 text-sm text-white">{description}</p>
 
       <p className="mt-1 sm:mt-2">
         <strong className="text-2xl font-bold text-white sm:text-3xl">
-          {price.amount} 
+          {price.amount}
         </strong>
         <span className="text-xs font-medium text-white">/month</span>
       </p>

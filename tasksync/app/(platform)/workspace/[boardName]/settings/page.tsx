@@ -5,12 +5,11 @@ import { getClient } from "@/app/(platform)/_info/clientInfo";
 import { liveClient } from "@/app/(platform)/_info/liveinfo";
 import ShowError from "@/app/(platform)/_parts/error";
 
-
 /**
  * SettingsPage is a functional component that renders the settings page for a specific board.
  * It fetches the board name from the URL parameters and renders a Sidebar component along with the Settings component.
  */
-export default async function SettingsPage ({
+export default async function SettingsPage({
   params,
 }: {
   params: { boardName: string };
@@ -41,9 +40,7 @@ export default async function SettingsPage ({
       </div>
     </div>
   );
-};
-
-
+}
 
 // If the board name is not available or is not a string, display a loading message.
 // if (!boardName || typeof boardName !== "string") {

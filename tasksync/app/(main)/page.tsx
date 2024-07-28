@@ -2,11 +2,7 @@
 import { Medal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
-import { WavyBackground } from "@/components/ui/wave";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
-import { Metadata } from "next";
 
 // This is the main page component for the application.
 // It displays a welcome message and a button to sign in with Google.

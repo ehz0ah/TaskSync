@@ -1,7 +1,6 @@
 import { Presence, useOthers } from "@/liveblocks.config";
 import { shallow } from "@liveblocks/client";
 import Image from "next/image";
-import { userInfo } from "os";
 
 type AvatarsProps = {
   presenceKey: keyof Presence;

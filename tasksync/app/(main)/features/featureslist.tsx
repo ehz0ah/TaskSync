@@ -1,4 +1,4 @@
-import FeatureCard from './featurecard';
+import FeatureCard from "./featurecard";
 
 const FeaturesList: React.FC = () => {
   return (
@@ -26,9 +26,9 @@ const FeaturesList: React.FC = () => {
         imgHeight={0}
         title="Live Collaboration"
         description="Work together in real-time. Edit tasks, brainstorm ideas, and communicate instantly with team members, regardless of location."
-        isSvg = {true}
-        svgContent = {
-            <svg
+        isSvg={true}
+        svgContent={
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-8 h-8 text-pink-500"
             fill="none"
