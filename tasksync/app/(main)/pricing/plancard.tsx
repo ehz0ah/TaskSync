@@ -1,8 +1,7 @@
-// components/PlanCard.tsx
-import React from 'react';
-import PlanDetails from './plandetails';
-import FeatureList from './featurelist';
-import { Plan } from './types';
+import React from "react";
+import PlanDetails from "./plandetails";
+import FeatureList from "./featurelist";
+import { Plan } from "./types";
 
 interface PlanCardProps {
   plan: Plan;

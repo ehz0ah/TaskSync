@@ -11,7 +11,16 @@ interface FeatureCardProps {
   svgContent?: JSX.Element;
 }
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ imgSrc, imgAlt, imgWidth, imgHeight, title, description, isSvg, svgContent }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({
+  imgSrc,
+  imgAlt,
+  imgWidth,
+  imgHeight,
+  title,
+  description,
+  isSvg,
+  svgContent,
+}) => {
   return (
     <a className="block rounded-xl border border-gray-800 p-4 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
       {isSvg ? (

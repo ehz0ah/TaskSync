@@ -1,4 +1,3 @@
-import Sidebar from "@/components/sidebar";
 import Top from "../../_parts/top";
 import { Metadata } from "next";
 

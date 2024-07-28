@@ -300,7 +300,11 @@ export default function TimeTree({ id }: { id: string }) {
   }
 
   return (
-    <RoomProvider id={id} initialPresence={{ cursor: { x: 0, y: 0 }, message: "" }} initialStorage={{events: new LiveList()}}>
+    <RoomProvider
+      id={id}
+      initialPresence={{ cursor: { x: 0, y: 0 }, message: "" }}
+      initialStorage={{ events: new LiveList() }}
+    >
       <main className="flex items-center justify-center h-full">
         <div className="h-[99vh] aspect-square">
           {" "}

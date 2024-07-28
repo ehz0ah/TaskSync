@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import { liveClient } from "@/app/(platform)/_info/liveinfo";
 
@@ -64,7 +64,10 @@ const Settings: React.FC<SettingsProps> = ({ boardName }) => {
           <h2 className="text-2xl mb-3 text-white">Collaborators</h2>
           <ul>
             {collaborators.map((email) => (
-              <li key={email} className="text-white flex items-center justify-between">
+              <li
+                key={email}
+                className="text-white flex items-center justify-between"
+              >
                 {email}
                 <button
                   onClick={() => removeCollaborator(email)}

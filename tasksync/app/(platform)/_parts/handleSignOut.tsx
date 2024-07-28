@@ -28,7 +28,11 @@ export default function HandleSignOut() {
       </Button>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
+        <Dialog
+          as="div"
+          className="relative z-10"
+          onClose={() => setIsOpen(false)}
+        >
           <TransitionChild
             as={Fragment}
             enter="ease-out duration-300"

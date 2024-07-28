@@ -1,5 +1,4 @@
 "use client";
-import Alert from "@/app/(platform)/_parts/alert";
 import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 
@@ -17,7 +16,6 @@ export default function Login() {
             <Button
               onClick={() => {
                 signIn("google", { callbackUrl: "/workspace" });
-                // window.alert("SORRY YOU ARE BANNED FROM USING THIS APPLICATION");
               }}
               className="relative flex items-center justify-center w-full px-4 py-2 mb-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg group hover:bg-gray-50"
             >
@@ -38,9 +36,7 @@ export default function Login() {
           </div>
         </div>
         <div className="relative flex items-center justify-center">
-          <div className="absolute inset-0 flex items-center">
-            {/* <div className="w-full border-t border-gray-300" /> */}
-          </div>
+          <div className="absolute inset-0 flex items-center"></div>
           <div className="relative z-10 px-2 text-md text-center text-white font-extrabold">
             Or
           </div>

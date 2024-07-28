@@ -3,9 +3,6 @@ import { getServerSession } from "next-auth";
 import dynamic from "next/dynamic";
 import Alert from "../_parts/alert";
 import React, { Suspense } from "react";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
-import HomeContent from "../_parts/idk";
 import ShowError from "../_parts/error";
 import { Metadata } from "next";
 
@@ -35,5 +32,3 @@ export default async function PlatformPage() {
     </div>
   );
 }
-
-// return <HomeContent session={session} />;

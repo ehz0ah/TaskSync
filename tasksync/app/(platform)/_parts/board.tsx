@@ -1,9 +1,5 @@
 import Link from "next/link";
 import React, { use, useEffect } from "react";
-import SpeedDial from "./speeddial";
-import { useUpdateMyPresence } from "@/liveblocks.config";
-import Avatars from "./avatars";
-
 
 type BoardProps = {
   name: string | null;
@@ -65,12 +61,9 @@ export const Board: React.FC<BoardProps> = ({
           </svg>
         </Link>
       </button>
-      {/* This button displays the name of the board and navigates to the board page. */}
       <button className="text-2xl font-bold mb-4 text-white">
         <Link href={`/workspace/${roomId}/timetree`}>{name}</Link>
       </button>
-      {/* <SpeedDial name={name} /> */}
     </div>
   );
 };
-
