@@ -204,9 +204,13 @@ export const {
 
 "use client";
 import { createClient, LiveList } from "@liveblocks/client";
-import { createRoomContext } from "@liveblocks/react";
+import { createLiveblocksContext, createRoomContext } from "@liveblocks/react";
 import {UserData} from "app/userRoute/route"
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
+import { liveClient } from "./app/(platform)/_info/liveinfo";
+import { write } from "fs";
+import { RoomInfo } from "@liveblocks/node";
+import { format } from "path";
 
 
 
@@ -236,8 +240,38 @@ const client = createClient({
     // return userIds.map((userId) => ({
     //   name: userId
     // }))
-  }
+  },
+  resolveRoomsInfo: async ({roomIds}) => {
+    return roomIds.map((documentData) => ({
+      name: documentData,
+    }))
+  },
+
+  resolveMentionSuggestions: async ({text, roomId}) => {
+
+    let boardInfo: RoomInfo;
+    try {
+      boardInfo = await liveClient.getRoom(roomId)
+    } catch (error) {
+      console.error("Error fetching room info", error)
+      throw error;
+    }
+    const usersInRoom = boardInfo.usersAccesses
+    const userArray: string[] = []
+    Object.entries(usersInRoom).forEach(([user, permissions]) => {
+      if (permissions.length === 1 && permissions[0] === "room:write") {
+        userArray.push(user);
+      }})
+        if (!text) {
+          return userArray
+        }
+         else {
+          return userArray.filter((user) => user.includes(text));
+        }
+}
+
   });
+
 
 export type Presence = {
   cursor: { x: number; y: number };
@@ -279,5 +313,6 @@ type Storage = {
 export const { RoomProvider, useMyPresence, useOthers, useStorage, useUpdateMyPresence, useMutation, useThreads, useCreateThread } =
   createRoomContext<Presence, Storage, UserMeta, never, ThreadMetadata>(client);
 
+  export const {LiveblocksProvider, useInboxNotifications, useMarkAllInboxNotificationsAsRead, useUnreadInboxNotificationsCount} = createLiveblocksContext(client);
 // C:\Users\haozh\OneDrive\Documents\NUS\TaskSync\tasksync\app\api\auth\liveblocks-auth\route.ts
 // publicApiKey: "pk_dev_C4lVteMIitcKi3l4wsssiuC16HJzd8yhLCY9cv5O6WrEWZjyQSx3EaxNTWp0ct9f",

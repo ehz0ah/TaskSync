@@ -3,6 +3,7 @@ import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import HandleSignOut from "./handleSignOut";
 import ShowError from "./error";
+import Inbox from "../workspace/[boardName]/taskmanager/Inbox";
 
 export default async function Top() {
   const session = await getServerSession(authOptions);
@@ -14,6 +15,7 @@ export default async function Top() {
     <header className="absolute top-0 left-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
         <Logo textColour="text-white" dir="/workspace" />
+        <Inbox userId={session?.user?.email as string} />
         <div className="text-white items-center justify-between font-bold">
           Hello, {session?.user?.name}
           <HandleSignOut />
